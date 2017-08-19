@@ -1,0 +1,14 @@
+{
+  "name": "pinochan",
+  "version": "0.0.1",
+  "description": "Kawaii telegram bot",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BlackSponge",
+  "license": "MIT",
+  "dependencies": {
+    "telegram-node-bot": "^4.0.5"
+  }
+}
