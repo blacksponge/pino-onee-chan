@@ -1,6 +1,6 @@
 'use strict'
 
-const Telegram = require('telegram-node-bot');
+const Telegram = require('telegram-node-bot')
 const TelegramBaseController = Telegram.TelegramBaseController
 const InputFile = Telegram.InputFile
 
