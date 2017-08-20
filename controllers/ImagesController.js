@@ -12,8 +12,28 @@ class ImagesController extends TelegramBaseController {
   }
 
   danbooruHandler ($) {
-    getJSON(`http://danbooru.donmai.us/posts/random.json`, $, (parsedData) => {
-      $.sendPhoto(InputFile.byUrl(`http://danbooru.donmai.us${parsedData.file_url}`, `img.${parsedData.file_ext}`),)
+    let tag = $.message.text
+      .split(' ')
+      .filter(el => {return el.length})
+      .slice(1)
+      .join(' ')
+    let url = 'http://danbooru.donmai.us/posts/random.json'
+    if (tag) {
+      url += `?tags=${encodeURIComponent(tag)}`
+    }
+    console.log(url)
+    getJSON(url, $, (parsedData) => {
+      if (parsedData.file_url) {
+
+        if (parsedData.file_ext == 'gif') {
+          $.sendDocument(InputFile.byUrl(`http://danbooru.donmai.us${parsedData.file_url}`, parsedData.file_url))
+        } else {
+          $.sendPhoto(InputFile.byUrl(`http://danbooru.donmai.us${parsedData.file_url}`))
+        }
+
+      } else {
+        $.sendMessage('Try again')
+      }
     })
   }
 
