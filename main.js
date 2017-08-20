@@ -8,6 +8,7 @@ const fs = require('fs')
 
 const PingController = require('./controllers/PingController')
 const ImagesController = require('./controllers/ImagesController')
+const DefinitionController = require('./controllers/DefinitionController');
 
 const PinoCommandFilter = require('./utils/PinoCommandFilter');
 
@@ -24,4 +25,8 @@ tg.router
   .when(
     new PinoCommandFilter(config.prefix, 'flip_table', 'flipTableCommand'),
     new ImagesController()
+  )
+  .when(
+    new PinoCommandFilter(config.prefix, 'define', 'defineCommand'),
+    new DefinitionController()
   )
