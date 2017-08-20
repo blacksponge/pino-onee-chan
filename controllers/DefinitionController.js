@@ -15,7 +15,7 @@ class DefinitionController extends TelegramBaseController {
     let page = 1
     let term = ''
     if (args[0] === '-p' && !isNaN(args[1])) {
-      page = args [1]
+      page = parseInt(args[1])
       term = args.slice(2).join(' ')
     } else {
       term = args.join(' ')
