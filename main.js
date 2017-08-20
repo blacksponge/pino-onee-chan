@@ -25,7 +25,8 @@ tg.router
     new PingController()
   )
   .when(
-    new PinoCommandFilter(config.prefix, 'flip_table', 'flipTableCommand'),
+    [new PinoCommandFilter(config.prefix, 'flip_table', 'flipTableCommand'),
+    new PinoCommandFilter(config.prefix, 'pic', 'danbooruCommand')],
     new ImagesController()
   )
   .when(

@@ -3,7 +3,7 @@
 const Telegram = require('telegram-node-bot')
 const TelegramBaseController = Telegram.TelegramBaseController
 
-const http = require('http')
+const { getJSON } = require('../utils/common')
 
 class DefinitionController extends TelegramBaseController {
 
@@ -21,32 +21,12 @@ class DefinitionController extends TelegramBaseController {
       term = args.join(' ')
     }
 
+    let url = `http://api.urbandictionary.com/v0/define?term=${encodeURIComponent(term)}`
+    getJSON(url, $, this.sendDefinition.bind(null, page, $))
 
-    let req = http.get(`http://api.urbandictionary.com/v0/define?term=${encodeURIComponent(term)}`, (res) => {
-      const { statusCode } = res
-      if (statusCode != 200) {
-        $.sendMessage(`The remote server is rude, answered me with ${statusCode} code`)
-        res.resume()
-        return
-      }
-
-      res.setEncoding('utf-8')
-      let rawData = ''
-      res.on('data', (chunk) => {
-        rawData += chunk
-      })
-      res.on('end', () => {
-        try {
-          let parsedData = JSON.parse(rawData)
-          this.sendDefinition($, parsedData, page)
-        } catch (e) {
-          $.sendMessage('Those data are too difficult to understand. Giving up..')
-        }
-      })
-    })
   }
 
-  sendDefinition ($, jsonDef, page) {
+  sendDefinition (page, $, jsonDef) {
     let finalMessage = ''
 
     if (jsonDef.result_type === 'exact') {
