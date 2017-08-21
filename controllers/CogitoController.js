@@ -21,7 +21,7 @@ class CogitoController extends TelegramBaseController {
     : ''
     let qw = $.pinoMessageInfo.questionWord
     if (qw.word && qw.word !== 'est ce') {
-      finalMessage += `je sais pas \n[debug: ${qw.word}, ${qw.pos}]`
+      finalMessage += `je sais pas \n[debug]: ${JSON.stringify($.pinoMessageInfo)}`
     } else {
       finalMessage += 'oui !'
     }

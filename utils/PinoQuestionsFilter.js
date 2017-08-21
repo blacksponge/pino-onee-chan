@@ -23,18 +23,23 @@ class PinoQuestionsFilter extends BaseCommand {
     // Getting rid of anoying stuff
     let newMessage = message
       .toLowerCase()
-      .split(/[ -,']/)
+      .split(/[-,' ]/)
       .filter(el => {return el.length})
 
     //Looking for words
-    let tu = newMessage.indexOf('tu') >= 0 || newMessage.indexOf('t') >= 0
+    let tuWords = ['tu', 't', 'toi']
+    let tu = false
+    for (let i = 0; i < tuWords.length && !tu; i++) {
+      tu = newMessage.indexOf(tuWords[i]) >= 0
+    }
 
     //Looking for pattern
     newMessage = newMessage.join(' ')
 
     let questionWord = {word:'', pos: -1}
-    let questionWordRegex = /(qu(o?i|e|and)|comment|est ce|ou)/
+    let questionWordRegex = /est ce|(qu(o?i|e|and)|comment|ou)/
     let matchedQuestionWord = removeAccent(newMessage).match(questionWordRegex)
+
     if (matchedQuestionWord) {
       questionWord.pos = matchedQuestionWord.index
       questionWord.word = matchedQuestionWord[0]
