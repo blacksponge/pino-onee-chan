@@ -29,13 +29,13 @@ class ImagesController extends TelegramBaseController {
             InputFile.byUrl(
               `http://danbooru.donmai.us${parsedData.file_url}`,
               parsedData.file_url),
-            {caption: `http://danbooru.donmai.us/post/${parsedData.id}`})
+            {caption: `http://danbooru.donmai.us/posts/${parsedData.id}`})
         } else {
           $.sendPhoto(
               InputFile.byUrl(
                 `http://danbooru.donmai.us${parsedData.file_url}`,
                 parsedData.file_url),
-              {caption: `http://danbooru.donmai.us/post/${parsedData.id}`})
+              {caption: `http://danbooru.donmai.us/posts/${parsedData.id}`})
         }
 
       } else {
