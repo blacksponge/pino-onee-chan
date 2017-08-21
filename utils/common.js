@@ -25,3 +25,7 @@ exports.getJSON = function (url, scope, callback) {
     })
   })
 };
+
+exports.removeAccent = function (text) {
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+}

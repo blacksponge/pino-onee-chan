@@ -12,7 +12,7 @@ const DefinitionController = require('./controllers/DefinitionController')
 const CogitoController = require('./controllers/CogitoController')
 
 const PinoCommandFilter = require('./utils/PinoCommandFilter')
-const PinoMessageFilter = require('./utils/PinoMessageFilter')
+const PinoQuestionsFilter = require('./utils/PinoQuestionsFilter')
 
 const config = JSON.parse(fs.readFileSync('config.json'))
 
@@ -34,6 +34,6 @@ tg.router
     new DefinitionController()
   )
   .when(
-    new PinoMessageFilter('questionCommand', /(est[- ]ce|tu).*\?$/i),
+    new PinoQuestionsFilter('questionCommand'),
     new CogitoController()
   )

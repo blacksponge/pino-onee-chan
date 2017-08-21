@@ -21,7 +21,6 @@ class ImagesController extends TelegramBaseController {
     if (tag) {
       url += `?tags=${encodeURIComponent(tag)}`
     }
-    console.log(url)
     getJSON(url, $, (parsedData) => {
       if (parsedData.file_url) {
 
