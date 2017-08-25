@@ -1,6 +1,13 @@
 const CONFIG = {
   "apiToken": "",
-  "prefix": ["!", "/"]
+  "prefix": ["!", "/"],
+  "pinoSup": {
+    "chatIds": [],
+    "probPing": {
+      "hosts": [],
+      "interval": 5*60*1000
+    }
+  }
 }
 
 module.exports = CONFIG;
