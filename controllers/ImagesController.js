@@ -23,19 +23,17 @@ class ImagesController extends TelegramBaseController {
     }
     getJSON(url, $, (parsedData) => {
       if (parsedData.file_url) {
+        let options = {caption: `Source http://danbooru.donmai.us/posts/${parsedData.id}`}
+
+        let input = InputFile.byUrl(
+          `http://danbooru.donmai.us${parsedData.file_url}`,
+          parsedData.file_url
+        )
 
         if (parsedData.file_ext == 'gif') {
-          $.sendDocument(
-            InputFile.byUrl(
-              `http://danbooru.donmai.us${parsedData.file_url}`,
-              parsedData.file_url),
-            {caption: `http://danbooru.donmai.us/posts/${parsedData.id}`})
+          $.sendDocument(input, options)
         } else {
-          $.sendPhoto(
-              InputFile.byUrl(
-                `http://danbooru.donmai.us${parsedData.file_url}`,
-                parsedData.file_url),
-              {caption: `http://danbooru.donmai.us/posts/${parsedData.id}`})
+          $.sendPhoto(input, options)
         }
 
       } else {
