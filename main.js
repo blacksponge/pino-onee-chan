@@ -14,7 +14,7 @@ const CogitoController = require('./controllers/CogitoController')
 const PinoCommandFilter = require('./utils/PinoCommandFilter')
 const PinoQuestionsFilter = require('./utils/PinoQuestionsFilter')
 
-const config = JSON.parse(fs.readFileSync('config.json'))
+const config = require('./config')
 
 const tg = new Telegram.Telegram(config.apiToken)
 
