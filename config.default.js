@@ -10,7 +10,8 @@ const CONFIG = {
   },
   "pinoIrc": {
     "server": "chat.freenode.net",
-    "channels": []
+    "channels": [],
+    "chatIds": []
   }
 }
 

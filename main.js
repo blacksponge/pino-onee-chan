@@ -26,14 +26,15 @@ const config = require('./config')
 
 const tg = new Telegram.Telegram(config.apiToken)
 
-let pinoIrc = new PinoIrc()
 
+let pinoIrc = null
 let pinoSup = null
 
 if (cluster.isMaster) {
   pinoSup = new PinoSup(tg.api, [
     new PinoProbePing()
   ])
+  pinoIrc = new PinoIrc(tg.api)
 }
 
 tg.router
