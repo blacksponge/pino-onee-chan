@@ -16,7 +16,7 @@ class TelegramToIrcController extends TelegramBaseController {
     ? $.message.from.username
     : $.message.from.firstName + ' ' + $.message.from.lastName
 
-    PinoIrc.say(`[Telegram] ${pseudo}:\n${$.message.text.slice(1)}`)
+    PinoIrc.say($.message.chat.id, `[Telegram] ${pseudo}:\n${$.message.text.slice(1)}`)
   }
 
   get routes () {
