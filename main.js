@@ -13,6 +13,7 @@ const ImagesController = require('./controllers/ImagesController')
 const DefinitionController = require('./controllers/DefinitionController')
 const CogitoController = require('./controllers/CogitoController')
 const TelegramToIrcController = require('./controllers/TelegramToIrcController')
+const AnimeController = require('./controllers/AnimeController')
 
 const PinoCommandFilter = require('./utils/PinoCommandFilter')
 const PinoQuestionsFilter = require('./utils/PinoQuestionsFilter')
@@ -50,6 +51,10 @@ tg.router
   .when(
     new PinoCommandFilter(config.prefix, 'define', 'defineCommand'),
     new DefinitionController()
+  )
+  .when(
+    new PinoCommandFilter(config.prefix, 'character', 'characterSearchCommand'),
+    new AnimeController()
   )
   .when(
     new PinoQuestionsFilter('questionCommand'),
