@@ -11,6 +11,12 @@ class ImagesController extends TelegramBaseController {
     $.sendDocument(InputFile.byFilePath('imgs/flip_table.gif'))
   }
 
+  thisIsFineHandler ($) {
+    let imgs = ['daijoubu', 'this_is_fine']
+    let img = imgs[Math.floor(Math.random()*imgs.length)]
+    $.sendPhoto(InputFile.byFilePath(`imgs/${img}.jpg`))
+  }
+
   danbooruHandler ($) {
     let tag = $.message.text
       .split(' ')
@@ -45,7 +51,8 @@ class ImagesController extends TelegramBaseController {
   get routes() {
     return {
       'flipTableCommand': 'flipTableHandler',
-      'danbooruCommand': 'danbooruHandler'
+      'danbooruCommand': 'danbooruHandler',
+      'thisIsFineCommand': 'thisIsFineHandler'
     }
   }
 }
