@@ -46,7 +46,8 @@ tg.router
   .when(
     [new PinoCommandFilter(config.prefix, 'flip_table', 'flipTableCommand'),
     new PinoCommandFilter(config.prefix, 'this_is_fine', 'thisIsFineCommand'),
-    new PinoCommandFilter(config.prefix, 'pic', 'danbooruCommand')],
+    new PinoCommandFilter(config.prefix, 'pic', 'danbooruCommand'),
+    new PinoCommandFilter(config.prefix, 'burger', 'burgerMaisonCommand')],
     new ImagesController()
   )
   .when(

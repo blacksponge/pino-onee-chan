@@ -17,6 +17,10 @@ class ImagesController extends TelegramBaseController {
     $.sendPhoto(InputFile.byFilePath(`imgs/${img}.jpg`))
   }
 
+  bugerMaisonHandler ($) {
+    $.sendPhoto(InputFile.byFilePath('imgs/burger.jpg'))
+  }
+
   danbooruHandler ($) {
     let tag = $.message.text
       .split(' ')
@@ -52,7 +56,8 @@ class ImagesController extends TelegramBaseController {
     return {
       'flipTableCommand': 'flipTableHandler',
       'danbooruCommand': 'danbooruHandler',
-      'thisIsFineCommand': 'thisIsFineHandler'
+      'thisIsFineCommand': 'thisIsFineHandler',
+      'burgerMaisonCommand': 'bugerMaisonHandler'
     }
   }
 }
