@@ -18,8 +18,9 @@ class ImagesController extends TelegramBaseController {
   }
 
   bugerMaisonHandler ($) {
-    let imgNb = Math.floor(Math.random()*2);
-    $.sendPhoto(InputFile.byFilePath(`imgs/burger${imgNb}.jpg`))
+    let imgs = ['burger1.jpg', 'burger2.png']
+    let img = imgs[Math.floor(Math.random()*imgs.length)]
+    $.sendPhoto(InputFile.byFilePath(`imgs/${img}`))
   }
 
   danbooruHandler ($) {
