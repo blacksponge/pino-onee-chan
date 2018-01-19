@@ -13,6 +13,10 @@ class PinoQuestionsFilter extends BaseCommand {
 
   test ($) {
     let message = $.message.text
+    if (!message) {
+      return false
+    }
+
     let questionMarkIndex = message.indexOf('?')
     let questionMark = questionMarkIndex >= 0 && questionMarkIndex >= (message.length - 5)
 
