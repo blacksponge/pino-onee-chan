@@ -38,13 +38,14 @@ class ImagesController extends TelegramBaseController {
         let options = {caption: `Source http://danbooru.donmai.us/posts/${parsedData.id}`}
 
         let input = InputFile.byUrl(
-          `http://danbooru.donmai.us${parsedData.file_url}`,
+          parsedData.file_url,
           parsedData.file_url
         )
 
         if (parsedData.file_ext == 'gif') {
           $.sendDocument(input, options)
         } else {
+          console.log(input)
           $.sendPhoto(input, options)
         }
 
