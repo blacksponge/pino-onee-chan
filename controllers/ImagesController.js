@@ -29,13 +29,13 @@ class ImagesController extends TelegramBaseController {
       .filter(el => {return el.length})
       .slice(1)
       .join(' ')
-    let url = 'http://danbooru.donmai.us/posts/random.json'
+    let url = 'https://danbooru.donmai.us/posts/random.json'
     if (tag) {
       url += `?tags=${encodeURIComponent(tag)}`
     }
     getJSON(url, $, (parsedData) => {
       if (parsedData.file_url) {
-        let options = {caption: `Source http://danbooru.donmai.us/posts/${parsedData.id}`}
+        let options = {caption: `Source https://danbooru.donmai.us/posts/${parsedData.id}`}
 
         let input = InputFile.byUrl(
           parsedData.file_url,
