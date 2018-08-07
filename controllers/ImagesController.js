@@ -34,7 +34,7 @@ class ImagesController extends TelegramBaseController {
       url += `?random=true&limit=1&tags=${encodeURIComponent(tag)}`
     }
     getJSON(url, $, (parsedData) => {
-      if (parsedData.length > 0) {
+      if (parsedData.length > 0 && parsedData[0].file_url) {
         let options = {caption: `Source https://danbooru.donmai.us/posts/${parsedData[0].id}`}
 
         let input = InputFile.byUrl(
@@ -49,8 +49,10 @@ class ImagesController extends TelegramBaseController {
           $.sendPhoto(input, options)
         }
 
-      } else {
+      } else if (parsedData.length > 0) {
         $.sendMessage('Try again')
+      } else {
+        $.sendMessage('404 wsh')
       }
     })
   }
