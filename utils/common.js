@@ -11,7 +11,6 @@ exports.getJSON = function (url, scope, callback) {
 
     if (response.statusCode !== 200) {
       scope.sendMessage(`The remote server is rude, answered me with ${response.statusCode} code`)
-      res.resume()
       return
     }
 
