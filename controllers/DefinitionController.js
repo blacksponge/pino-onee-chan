@@ -21,7 +21,7 @@ class DefinitionController extends TelegramBaseController {
       term = args.join(' ')
     }
 
-    let url = `http://api.urbandictionary.com/v0/define?term=${encodeURIComponent(term)}`
+    let url = `https://api.urbandictionary.com/v0/define?term=${encodeURIComponent(term)}`
     getJSON(url, $, this.sendDefinition.bind(null, page, $))
 
   }
@@ -29,7 +29,7 @@ class DefinitionController extends TelegramBaseController {
   sendDefinition (page, $, jsonDef) {
     let finalMessage = ''
 
-    if (jsonDef.result_type === 'exact') {
+    if (jsonDef.list.length > 0) {
       let def = jsonDef.list[page-1]
       if (def) {
         let nbDefs = jsonDef.list.length
@@ -41,7 +41,7 @@ class DefinitionController extends TelegramBaseController {
         finalMessage = 'Are you dumb? That page doesn\'t exist.'
       }
     } else {
-      finalMessage = jsonDef.result_type
+      finalMessage = 'no result'
     }
 
     $.sendMessage(finalMessage, {
