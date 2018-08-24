@@ -29,10 +29,7 @@ class ImagesController extends TelegramBaseController {
       .filter(el => {return el.length})
       .slice(1)
       .join(' ')
-    let url = 'https://danbooru.donmai.us/posts.json'
-    if (tag) {
-      url += `?random=true&limit=1&tags=${encodeURIComponent(tag)}`
-    }
+    let url = `https://danbooru.donmai.us/posts.json?random=true&limit=1&tags=${encodeURIComponent(tag)}`
     getJSON(url, $, (parsedData) => {
       if (parsedData.length > 0 && parsedData[0].file_url) {
         let options = {caption: `Source https://danbooru.donmai.us/posts/${parsedData[0].id}`}
