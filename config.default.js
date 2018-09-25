@@ -3,10 +3,7 @@ const CONFIG = {
   "prefix": ["/"],
   "pinoSup": {
     "chatIds": [],
-    "probPing": {
-      "hosts": [],
-      "interval": 5*60*1000
-    }
+    "port": 1337
   },
   "pinoIrc": {
     "server": "chat.freenode.net",

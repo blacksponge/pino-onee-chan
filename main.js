@@ -19,7 +19,6 @@ const PinoCommandFilter = require('./utils/PinoCommandFilter')
 const PinoQuestionsFilter = require('./utils/PinoQuestionsFilter')
 
 const PinoSup = require('./lib/sup/PinoSup')
-const PinoProbePing = require('./lib/sup/PinoProbePing')
 
 const PinoIrc = require('./lib/irc/PinoIrc')
 
@@ -32,9 +31,7 @@ let pinoIrc = null
 let pinoSup = null
 
 if (cluster.isMaster) {
-  pinoSup = new PinoSup(tg.api, [
-    new PinoProbePing()
-  ])
+  pinoSup = new PinoSup(tg.api)
   pinoIrc = new PinoIrc(tg.api)
 }
 
