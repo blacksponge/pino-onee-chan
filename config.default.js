@@ -3,6 +3,7 @@ const CONFIG = {
   "prefix": ["/"],
   "pinoSup": {
     "chatIds": [],
+    "remotes": ["127.0.0.1"]
     "port": 1337
   },
   "pinoIrc": {
