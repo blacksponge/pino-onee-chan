@@ -31,8 +31,8 @@ let pinoIrc = null
 let pinoSup = null
 
 if (cluster.isMaster) {
-  pinoSup = new PinoSup(tg.api)
   pinoIrc = new PinoIrc(tg.api)
+  pinoSup = new PinoSup(tg.api, pinoIrc)
 }
 
 tg.router

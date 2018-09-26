@@ -3,8 +3,9 @@ const CONFIG = {
   "prefix": ["/"],
   "pinoSup": {
     "chatIds": [],
-    "remotes": ["127.0.0.1"]
-    "port": 1337
+    "remotes": ["127.0.0.1"],
+    "port": 1337,
+    "ircChan": []
   },
   "pinoIrc": {
     "server": "chat.freenode.net",
