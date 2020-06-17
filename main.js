@@ -19,6 +19,7 @@ const PinoCommandFilter = require('./utils/PinoCommandFilter')
 const PinoQuestionsFilter = require('./utils/PinoQuestionsFilter')
 
 const PinoSup = require('./lib/sup/PinoSup')
+const WebHook = require('./lib/sup/WebHook')
 
 const PinoIrc = require('./lib/irc/PinoIrc')
 
@@ -29,10 +30,12 @@ const tg = new Telegram.Telegram(config.apiToken)
 
 let pinoIrc = null
 let pinoSup = null
+let webHook = null
 
 if (cluster.isMaster) {
   pinoIrc = new PinoIrc(tg.api)
   pinoSup = new PinoSup(tg.api, pinoIrc)
+  webHook = new WebHook(tg.api)
 }
 
 tg.router
